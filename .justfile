@@ -39,10 +39,10 @@ alias d    := doxygen
 alias l    := lint
 
 # The default recipe to execute.
-@default: doxygen
+@default: check
 
 # Execute all configured recipes.
-@all: clear doxygen
+@all: clear check
 
 # Ensure a good code quality.
 @check: doxygen lint
