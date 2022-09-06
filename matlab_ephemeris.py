@@ -48,7 +48,7 @@ from argparse import ArgumentParser
 from argparse import Namespace
 from pathlib import Path
 import json
-# from matlab import engine as Matlab
+from matlab import engine as Matlab
 
 
 
@@ -100,25 +100,18 @@ def ephemeris (arguments: Namespace) -> ([float], [float]):
     lists of three float components.
     '''
 
-    #engine = Matlab.start_matlab ()
+    engine = Matlab.start_matlab ()
 
-    #julian_date = engine.JulianDate ( arguments.year
-    #                                , arguments.month
-    #                                , arguments.day
-    #                                )
+    julian_date = engine.JulianDate ( arguments.year
+                                    , arguments.month
+                                    , arguments.day
+                                    )
 
-    #return engine.planetEphemeris   ( julian_date
-    #                                , arguments.reference_point
-    #                                , arguments.object
-    #                                , units = arguments.unit
-    #                                )
-    print   ( str (arguments.year)
-            + ' '
-            + str (arguments.month)
-            + ' '
-            + str (arguments.day)
-            )
-    return [1,2,3], [4,5,6]
+    return engine.planetEphemeris   ( julian_date
+                                    , arguments.reference_point
+                                    , arguments.object
+                                    , units = arguments.unit
+                                    )
 
 
 
