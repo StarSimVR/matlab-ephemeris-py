@@ -134,7 +134,7 @@ def main () -> None:
     * the month to query the ephemeris data for; and
     * the year to query the ephemeris data for.
 
-    At option, the following data can be set, as well.
+    At option, the following data can be set, as well:
 
     * the reference point;
     * the scalar; and
@@ -160,7 +160,7 @@ def main () -> None:
 
     When writing to the scene file, there will be a backup created, by default.
     Then, the object the ephemeris data was queried for is going to fetched from
-    the scene file by name.  It values for both position and velocity will be
+    the scene file by name.  Its values for both position and velocity will be
     set to the ephemeris data received from Matlab.  Finally, the new scene will
     be written to the original file path.  The backup ensures that this
     procedure is not going to destroy any settings.
