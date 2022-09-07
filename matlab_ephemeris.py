@@ -83,12 +83,13 @@ CHOICES =   [ 'Sun'
 ################################################################################
 ##
 ## \brief   Query the data from Matlab.
-## \param   arguments   The command line arguments to process the query with.
+## \param   arguments       The command line arguments for the query.
+## \param   given_object    The object to query the data for.
 ## \return  Position and velocity.
 ##
 ################################################################################
 
-def ephemeris (arguments: Namespace) -> ([float], [float]):
+def ephemeris (arguments: Namespace, given_object: str) -> ([float], [float]):
     '''
     This function will perform the actual query.
 
