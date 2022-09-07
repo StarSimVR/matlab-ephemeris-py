@@ -83,12 +83,13 @@ CHOICES =   [ 'Sun'
 ################################################################################
 ##
 ## \brief   Query the data from Matlab.
-## \param   arguments   The command line arguments to process the query with.
+## \param   arguments       The command line arguments for the query.
+## \param   given_object    The object to query the data for.
 ## \return  Position and velocity.
 ##
 ################################################################################
 
-def ephemeris (arguments: Namespace) -> ([float], [float]):
+def ephemeris (arguments: Namespace, given_object: str) -> ([float], [float]):
     '''
     This function will perform the actual query.
 
@@ -194,8 +195,9 @@ def main () -> None:
     parser.add_argument ( '-o'
                         , '--object'
                         , choices = CHOICES
-                        , dest = 'object'
+                        , dest = 'objects'
                         , help = 'The object to request the ephemeris data for.'
+                        , nargs = '+'
                         , required = True
                         )
     parser.add_argument ( '-r'
@@ -229,25 +231,31 @@ def main () -> None:
                         )
     arguments = parser.parse_args ()
 
-    position, velocity = ephemeris (arguments)
-    position = [element * arguments.scalar for element in position]
-    velocity = [element * arguments.scalar for element in velocity]
+    for given_object in arguments.objects:
+        position, velocity = ephemeris (arguments, given_object)
+        position = [element * arguments.scalar for element in position]
+        velocity = [element * arguments.scalar for element in velocity]
 
-    update (arguments, position, velocity)
+        update (arguments, given_object, position, velocity)
 
 
 
 ################################################################################
 ##
 ## \brief   Write the results to the scene file.
-## \param   arguments   The command line arguments to take into account.
-## \param   position    The position vector to assign.
-## \param   velocity    The velocity vector to assign.
+## \param   arguments       The command line arguments to take into account.
+## \param   given_object    The object to update.
+## \param   position        The position vector to assign.
+## \param   velocity        The velocity vector to assign.
 ## \return  Nothing.
 ##
 ################################################################################
 
-def update (arguments: Namespace, position: [float], velocity: [float]) -> None:
+def update  ( arguments: Namespace
+            , given_object: str
+            , position: [float]
+            , velocity: [float]
+            ) -> None:
     '''
     This function will update the scene file.  If a file pattern is passed to
     this function, all files matching this pattern will be updated.
@@ -273,7 +281,7 @@ def update (arguments: Namespace, position: [float], velocity: [float]) -> None:
             astobjs = scene['objects']
 
             for astobj in astobjs:
-                if astobj['name'].lower () == arguments.object.lower ():
+                if astobj['name'].lower () == given_object.lower ():
                     astobj['position'] = position
                     astobj['velocity'] = velocity
                     break
