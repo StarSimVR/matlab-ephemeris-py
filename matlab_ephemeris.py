@@ -230,11 +230,12 @@ def main () -> None:
                         )
     arguments = parser.parse_args ()
 
-    position, velocity = ephemeris (arguments)
-    position = [element * arguments.scalar for element in position]
-    velocity = [element * arguments.scalar for element in velocity]
+    for given_object in arguments.objects:
+        position, velocity = ephemeris (arguments, given_object)
+        position = [element * arguments.scalar for element in position]
+        velocity = [element * arguments.scalar for element in velocity]
 
-    update (arguments, position, velocity)
+        update (arguments, given_object, position, velocity)
 
 
 
