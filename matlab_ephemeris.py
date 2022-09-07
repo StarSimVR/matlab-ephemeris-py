@@ -194,8 +194,9 @@ def main () -> None:
     parser.add_argument ( '-o'
                         , '--object'
                         , choices = CHOICES
-                        , dest = 'object'
+                        , dest = 'objects'
                         , help = 'The object to request the ephemeris data for.'
+                        , nargs = '+'
                         , required = True
                         )
     parser.add_argument ( '-r'
@@ -273,10 +274,11 @@ def update (arguments: Namespace, position: [float], velocity: [float]) -> None:
             astobjs = scene['objects']
 
             for astobj in astobjs:
-                if astobj['name'].lower () == arguments.object.lower ():
-                    astobj['position'] = position
-                    astobj['velocity'] = velocity
-                    break
+                for object in arguments.objects:
+                    if astobj['name'].lower () == object.lower ():
+                        astobj['position'] = position
+                        astobj['velocity'] = velocity
+                        break
 
             scene['objects'] = astobjs
             out_file.write (json.dumps (scene, indent = 4) + '\n')
