@@ -280,11 +280,10 @@ def update  ( arguments: Namespace
             astobjs = scene['objects']
 
             for astobj in astobjs:
-                for object in arguments.objects:
-                    if astobj['name'].lower () == object.lower ():
-                        astobj['position'] = position
-                        astobj['velocity'] = velocity
-                        break
+                if astobj['name'].lower () == given_object.lower ():
+                    astobj['position'] = position
+                    astobj['velocity'] = velocity
+                    break
 
             scene['objects'] = astobjs
             out_file.write (json.dumps (scene, indent = 4) + '\n')
