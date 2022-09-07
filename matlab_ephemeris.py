@@ -242,14 +242,19 @@ def main () -> None:
 ################################################################################
 ##
 ## \brief   Write the results to the scene file.
-## \param   arguments   The command line arguments to take into account.
-## \param   position    The position vector to assign.
-## \param   velocity    The velocity vector to assign.
+## \param   arguments       The command line arguments to take into account.
+## \param   given_object    The object to update.
+## \param   position        The position vector to assign.
+## \param   velocity        The velocity vector to assign.
 ## \return  Nothing.
 ##
 ################################################################################
 
-def update (arguments: Namespace, position: [float], velocity: [float]) -> None:
+def update  ( arguments: Namespace
+            , given_object: str
+            , position: [float]
+            , velocity: [float]
+            ) -> None:
     '''
     This function will update the scene file.  If a file pattern is passed to
     this function, all files matching this pattern will be updated.
