@@ -69,7 +69,7 @@ references:
     title: Python 3
     type: book
     year: 2015
-  - abtract: Der Grundkurs
+  - abstract: Der Grundkurs
     authors:
       - family-names: Kofler
         given-names: Michael
