@@ -63,9 +63,9 @@ references:
     languages:
       - de
     publisher:
-      - city: Bonn
-        country: DE
-        name: Rheinwerk
+      city: Bonn
+      country: DE
+      name: Rheinwerk
     title: Python 3
     type: book
     year: 2015
@@ -78,9 +78,9 @@ references:
     languages:
       - de
     publisher:
-      - city: Bonn
-        country: DE
-        name: Rheinwerk
+      city: Bonn
+      country: DE
+      name: Rheinwerk
     title: Python
     type: book
     year: 2019
