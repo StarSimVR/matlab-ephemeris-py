@@ -50,4 +50,39 @@ repository-code: https://github.com/StarSimVR/matlab-ephemeris-py
 title: matlab-ephemeris-py
 url: https://github.com/StarSimVR/matlab-ephemeris-py
 
+# References.
+references:
+  - abstract: Das umfassende Handbuch
+    authors:
+      - family-names: Ernesti
+        given-names: Johannes
+      - family-names: Kaiser
+        given-names: Peter
+    edition: '4'
+    isbn: 978-3-8362-3633-1
+    languages:
+      - de
+    publisher:
+      - city: Bonn
+        country: DE
+        name: Rheinwerk
+    title: Python 3
+    type: book
+    year: 2015
+  - abtract: Der Grundkurs
+    authors:
+      - family-names: Kofler
+        given-names: Michael
+    edition: '1'
+    isbn: 978-3-8362-6679-6
+    languages:
+      - de
+    publisher:
+      - city: Bonn
+        country: DE
+        name: Rheinwerk
+    title: Python
+    type: book
+    year: 2019
+
 ################################################################################
