@@ -49,6 +49,7 @@ from argparse import Namespace
 from pathlib import Path
 import json
 from matlab import engine as Matlab
+import numpy as np
 
 
 
@@ -102,17 +103,17 @@ def ephemeris (arguments: Namespace, given_object: str) -> ([float], [float]):
     '''
 
     engine = Matlab.start_matlab ()
+    datetime = engine.datetime(f"{arguments.day}-{arguments.month}-{arguments.year}", 'InputFormat', 'dd-MM-yyyy')
+    julian_date = engine.juliandate(datetime)
 
-    julian_date = engine.JulianDate ( arguments.year
-                                    , arguments.month
-                                    , arguments.day
-                                    )
-
-    return engine.planetEphemeris   ( julian_date
+    position, velocity = engine.planetEphemeris   ( julian_date
                                     , arguments.reference_point
-                                    , arguments.object
-                                    , units = arguments.unit
+                                    , given_object
+                                    , 405
+                                    , arguments.unit
+                                    , nargout = 2
                                     )
+    return np.array(position)[0], np.array(velocity)[0]
 
 
 
@@ -274,7 +275,7 @@ def update  ( arguments: Namespace
 
     for element in Path ().cwd ().glob (arguments.file):
         backup = element.with_suffix ('.bak')
-        element.rename (backup)
+        element.replace (backup)
 
         with open (backup, 'rt') as in_file, open (element, 'wt') as out_file:
             scene = json.load (in_file)
