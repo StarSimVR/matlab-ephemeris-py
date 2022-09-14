@@ -234,8 +234,8 @@ def main () -> None:
 
     for given_object in arguments.objects:
         position, velocity = ephemeris (arguments, given_object)
-        position = [element * arguments.scalar for element in position]
-        velocity = [element * arguments.scalar for element in velocity]
+        position = [element * arguments.scalar * 1000 for element in position]
+        velocity = [element * arguments.scalar * 1000 * 3600 for element in velocity]
 
         update (arguments, given_object, position, velocity)
 
