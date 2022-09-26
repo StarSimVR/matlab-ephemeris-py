@@ -178,6 +178,15 @@ both kilometres as well as Astronomical Units.  Kilometres are the default.
 
 This information is optional.
 
+### Help Option
+
+```
+-h
+```
+
+This script has a command line option explanation configured.  It can be invoked
+by this flag.  All options will be exlained.
+
 ## Build Instructions
 
 All build instructions are configured as Just recipes in the `.justfile` located
