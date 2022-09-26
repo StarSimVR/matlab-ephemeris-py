@@ -22,8 +22,7 @@
 --
 --  AUTHOR      Kevin Matthes
 --  BRIEF       Important information regarding this project.
---  COPYRIGHT   (C) 2022 Kevin Matthes.
---              This file is licensed GPL 2 as of June 1991.
+--  COPYRIGHT   GPL-2.0
 --  DATE        2022
 --  FILE        README.md
 --  NOTE        See `LICENSE' for full license.
