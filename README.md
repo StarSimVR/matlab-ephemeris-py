@@ -101,10 +101,10 @@ of astronomical objects.  The corresponding setups can be defined in JSON files
 to be read by the application.  These setups also include an initial position as
 well as an initial velocity for each astronomical object.
 
-In order to define realistic scenes, real positions and velocities can be freely
-added to the scene files.  In order to avoid mistakes due to copying and pasting
-the numbers to the JSON files by hand, an automation therefore will come in
-handy.
+In order to define realistic scenes, real positions and velocities can be added
+freely to the scene files.  In order to avoid mistakes due to copying and
+pasting the numbers to the JSON files by hand, an automation therefore will come
+in handy.
 
 Matlab provides several functionalities to query such astronomical data for a
 fixed set of astronomical objects.  This script will interface the local Matlab
