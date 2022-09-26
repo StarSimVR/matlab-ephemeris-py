@@ -96,6 +96,88 @@ recommended distribution is the *full* installation of *TeX Live*.
 
 ## Description
 
+[StarSimVR](https://github.com/StarSimVR/godot) is a simulator for the behaviour
+of astronomical objects.  The corresponding setups can be defined in JSON files
+to be read by the application.  These setups also include an initial position as
+well as an initial velocity for each astronomical object.
+
+In order to define realistic scenes, real positions and velocities can be freely
+added to the scene files.  In order to avoid mistakes due to copying and pasting
+the numbers to the JSON files by hand, an automation therefore will come in
+handy.
+
+Matlab provides several functionalities to query such astronomical data for a
+fixed set of astronomical objects.  This script will interface the local Matlab
+installation in order to add the queried astronomical data to the respective
+scene file(s).
+
+## Command Line Options
+
+### Date to Query
+
+```
+-d <day>
+-m <month>
+-y <year>
+```
+
+The interface to Matlab requires the specification of the date to query the data
+for.  The order of the date components can be passed to this script in arbitrary
+order.  All components need to be integers.
+
+All three information are mandatory.
+
+### Files to Edit
+
+```
+-f <pattern>
+```
+
+The script requires the specification of a file pattern.  All existing,
+readable, writable and valid StarSimVR scene files which the pattern can be
+matched against successfully will be edited.
+
+This information is mandatory.
+
+### Objects
+
+```
+-o <object 1> [<object 2> [<object 3> ...]]
+-r <object>
+```
+
+When calling the script, the astronomical objects to query the data for need to
+be passed with `-o`.  The number of queried objects is arbitrary.  Hence, all
+configured objects can be queried with just one call to this script.
+
+Furthermore, a reference point is needed.  It is set to the sun, by default, and
+can be altered with `-r`.  Here, the same objects are possible as for `-o`.
+
+The flag `-o` is mandatory while `-r` is optional.
+
+### Scalar
+
+```
+-s <float>
+```
+
+If one wishes to scale the retrieved data from Matlab, this can be done with
+this flag.  It requires the specification of a floating point number.  This flag
+is set to `1.0`, by default.
+
+This information is optional.
+
+### Unit of the Data
+
+```
+-u <unit>
+```
+
+The data queried from Matlab can be converted to various units.  Possible are
+both kilometres as well as Astronomical Units.  Kilometres are the default.
+
+This information is optional.
+
 ## Build Instructions
 
 All build instructions are configured as Just recipes in the `.justfile` located
