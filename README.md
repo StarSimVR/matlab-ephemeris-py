@@ -71,6 +71,29 @@ version is as follows:
 | Python            | environment   | source code interpreter               |
 | TeX Live (full)   | package       | LaTeX environment for Doxygen manual  |
 
+Since the script is written in *Python 3*, an appropriate Python interpreter is
+required for its execution.  The script uses functionalities of both *Matlab*
+and *Numpy*.  These dependencies need to be installed in order to ensure the
+script being working.
+
+Various checks of the source code will be invoked automatically by *Just*.  All
+required steps are defined in the `.justfile` and explained in the corresponding
+section below.
+
+A code quality check with *Pylint* is configured.
+
+Any build artifacts will be removed by *Git*.
+
+The source code contains docstrings to be processed by *Doxygen*.  By default,
+both an HTML and a LaTeX manual will be compiled.  They are saved in dedicated
+directories in the repository's root.  The LaTeX manual needs to be finalised
+with according compilers.  Their invocation is managed by Doxygen itself by the
+provision of multiple build scripts.  Instead of relying on them, this project
+defines an equal finalisation routine based upon *Latexmk*.  This finalisation
+will be called automatically by Just.  Please note that the compilation of a
+LaTeX project requires the installation of a LaTeX distribution.  The
+recommended distribution is the *full* installation of *TeX Live*.
+
 ## Description
 
 ## Build Instructions
